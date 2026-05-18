@@ -150,9 +150,13 @@ const categories = [
     >
 
       <img
-        src={banner.image}
-        className="w-full h-[220px] object-cover"
-      />
+  src={banner.image}
+  className="
+    w-full
+    aspect-[16/9]
+    object-cover
+  "
+/>
 
 
       <div className="absolute bottom-6 left-6 text-white">
