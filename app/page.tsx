@@ -42,32 +42,25 @@ export default function Home() {
 const banners = [
   {
     id: 1,
-    title: "Новые iPhone 15",
-    subtitle: "Скидки до 20%",
     image:
       "/banners/BU.png",
   },
 
   {
     id: 2,
-    title: "MacBook Air M3",
-    subtitle: "Легкий. Мощный.",
+    title: "Продай старое устройство",
     image:
       "/banners/Vikup.png",
   },
 
   {
     id: 3,
-    title: "AirPods Pro",
-    subtitle: "Новое поколение звука",
     image:
       "/banners/New.png",
   },
 
   {
     id: 4,
-    title: "AirPods Pro",
-    subtitle: "Новое поколение звука",
     image:
       "/banners/Trade.png",
   },
