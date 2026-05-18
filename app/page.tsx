@@ -48,7 +48,6 @@ const banners = [
 
   {
     id: 2,
-    title: "Продай старое устройство",
     image:
       "/banners/Vikup.png",
   },
@@ -102,20 +101,14 @@ const banners = [
 
       <img
         src={banner.image}
-        alt={banner.title}
         className="w-full h-[220px] object-cover"
       />
 
       <div className="absolute inset-0 bg-black/30" />
 
       <div className="absolute bottom-6 left-6 text-white">
-        <p className="text-sm opacity-80">
-          {banner.subtitle}
-        </p>
 
-        <h2 className="text-3xl font-bold mt-1">
-          {banner.title}
-        </h2>
+ 
       </div>
 
     </div>
