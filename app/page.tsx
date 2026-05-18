@@ -314,16 +314,14 @@ const categories = [
             onClick={() =>
               setSelectedCategory(category.name)
             }
-            className="bg-white rounded-3xl p-2 h-50 shadow-sm active:scale-95 transition"
+            className="w-full aspect-square bg-white rounded-3xl p-4 shadow-sm active:scale-95 transition"
           >
 
             <img
               src={category.image}
               alt={category.name}
-              className="w-40 h-40 object-contain mx-auto"
+              className="w-24 h-24 object-contain mx-auto"
             />
-
-            
 
           </button>
         ))}
