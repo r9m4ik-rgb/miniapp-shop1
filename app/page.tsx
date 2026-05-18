@@ -214,7 +214,7 @@ const categories = [
 
     {/* Categories */}
     {!selectedCategory && (
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-3 gap-5">
 
         {categories.map((category) => (
           <button
