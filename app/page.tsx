@@ -104,7 +104,6 @@ const banners = [
         className="w-full h-[220px] object-cover"
       />
 
-      <div className="absolute inset-0 bg-black/30" />
 
       <div className="absolute bottom-6 left-6 text-white">
 
@@ -113,7 +112,6 @@ const banners = [
 
     </div>
   ))}
-
 </div>
 
       <div className="grid gap-6">
