@@ -23,7 +23,7 @@ export default function Home() {
     title: "Canon G7X Mark 3 Black",
     price: "94.990₽",
     image:
-      "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-15-pro-max-blacktitanium-select",
+      "/banners/g7x.jpg",
   },
   {
     id: 2,
@@ -38,6 +38,27 @@ export default function Home() {
     price: "299€",
     image:
       "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MQD83",
+  },
+  {
+    id: 4,
+    title: "iPhone 15 Pro",
+    price: "1299€",
+    image:
+      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-family-hero",
+  },
+  {
+    id: 5,
+    title: "Apple Watch Ultra",
+    price: "799€",
+    image:
+      "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MQF23",
+  },
+  {
+    id: 6,
+    title: "HomePod mini",
+    price: "99€",
+    image:
+      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/homepod-mini-select-spacegray",
   },
 ];
 
@@ -97,21 +118,25 @@ const categories = [
     <main className="min-h-screen bg-[#f5f5f7] p-5 pb-40">
 
 <div className="sticky top-0 z-50 bg-[#f5f5f7] pb-4">
-  <div className="flex items-center justify-between pt-2">
-    <div>
-      <p className="text-gray-500 text-sm">
-        Telegram Mini App
-      </p>
+</div>
 
-      <h1 className="text-3xl font-bold mt-1">
-        MosAppleTorg
-      </h1>
-    </div>
+{/* Search */}
 
-    <div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center text-xl font-bold">
-      M
-    </div>
-  </div>
+<div className="mb-6">
+  <input
+    type="text"
+    placeholder="Поиск техники..."
+    className="
+      w-full
+      bg-white
+      rounded-2xl
+      px-5
+      py-4
+      text-lg
+      outline-none
+      shadow-sm
+    "
+  />
 </div>
 
 {activeTab === "home" && (
@@ -142,39 +167,106 @@ const categories = [
   ))}
 </div>
 
-      <div className="grid gap-6">
-        {products.map((item) => (
-          <div
-            key={item.id}
-            className="bg-white rounded-3xl overflow-hidden shadow-sm"
+{/* Hits */}
+
+<div className="mb-8">
+
+  <div className="flex items-center justify-between mb-4">
+    <h2 className="text-2xl font-bold">
+      Хиты продаж
+    </h2>
+  </div>
+
+  <div className="flex gap-4 overflow-x-auto no-scrollbar pb-2">
+
+    {products.map((item) => (
+      <div
+        key={item.id}
+        className="min-w-[260px] bg-white rounded-3xl overflow-hidden shadow-sm"
+      >
+
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full h-[220px] object-contain p-5"
+        />
+
+        <div className="p-5">
+
+          <h2 className="text-lg font-semibold">
+            {item.title}
+          </h2>
+
+          <p className="text-gray-500 mt-2">
+            {item.price}
+          </p>
+
+          <button
+            onClick={() =>
+              setCart([...cart, item.title])
+            }
+            className="w-full mt-4 bg-blue-500 text-white py-3 rounded-2xl"
           >
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-full h-[260px] object-contain bg-white p-5"
-            />
+            Купить
+          </button>
 
-            <div className="p-5">
-              <h2 className="text-2xl font-semibold mb-2">
-                {item.title}
-              </h2>
-
-              <p className="text-xl text-gray-500 mb-5">
-                {item.price}
-              </p>
-
-              <button
-  onClick={() =>
-    setCart([...cart, item.title])
-  }
-                className="w-full bg-blue-500 text-white py-4 rounded-2xl text-lg font-medium hover:opacity-90 transition"
-              >
-                Купить
-              </button>
-            </div>
-          </div>
-        ))}
+        </div>
       </div>
+    ))}
+
+  </div>
+</div>
+
+{/* New Products */}
+
+<div className="mb-8">
+
+  <div className="flex items-center justify-between mb-4">
+    <h2 className="text-2xl font-bold">
+      Новинки
+    </h2>
+  </div>
+
+  <div className="flex gap-4 overflow-x-auto no-scrollbar pb-2">
+
+    {products.map((item) => (
+      <div
+        key={item.id}
+        className="min-w-[260px] bg-white rounded-3xl overflow-hidden shadow-sm"
+      >
+
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full h-[220px] object-contain p-5"
+        />
+
+        <div className="p-5">
+
+          <h2 className="text-lg font-semibold">
+            {item.title}
+          </h2>
+
+          <p className="text-gray-500 mt-2">
+            {item.price}
+          </p>
+
+          <button
+            onClick={() =>
+              setCart([...cart, item.title])
+            }
+            className="w-full mt-4 bg-black text-white py-3 rounded-2xl"
+          >
+            Купить
+          </button>
+
+        </div>
+      </div>
+    ))}
+
+  </div>
+</div>
+
       {cart.length > 0 && (
   <div className="fixed bottom-5 left-5 right-5 bg-black text-white rounded-3xl p-5 shadow-2xl">
     
