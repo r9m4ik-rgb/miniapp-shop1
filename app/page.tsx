@@ -117,26 +117,23 @@ const categories = [
   return (
     <main className="min-h-screen bg-[#f5f5f7] p-5 pb-40">
 
-<div className="sticky top-0 z-50 bg-[#f5f5f7] pb-4">
-</div>
-
-{/* Search */}
-
-<div className="mb-6">
-  <input
-    type="text"
-    placeholder="Поиск техники..."
-    className="
-      w-full
-      bg-white
-      rounded-2xl
-      px-5
-      py-4
-      text-lg
-      outline-none
-      shadow-sm
-    "
-  />
+<div className="sticky top-0 z-50 bg-transparent">
+  <div className="px-5 pt-3 pb-3">
+    <input
+      type="text"
+      placeholder="Поиск техники..."
+      className="
+        w-full
+        bg-white
+        rounded-2xl
+        px-5
+        py-4
+        text-lg
+        outline-none
+        shadow-sm
+      "
+    />
+  </div>
 </div>
 
 {activeTab === "home" && (
@@ -267,30 +264,7 @@ const categories = [
   </div>
 </div>
 
-      {cart.length > 0 && (
-  <div className="fixed bottom-5 left-5 right-5 bg-black text-white rounded-3xl p-5 shadow-2xl">
-    
-    <div className="flex items-center justify-between">
-      
-      <div>
-        <p className="text-sm text-gray-400">
-          Корзина
-        </p>
 
-        <h2 className="text-xl font-bold">
-          {cart.length} товаров
-        </h2>
-      </div>
-
-      <button
-        className="bg-white text-black px-5 py-3 rounded-2xl font-semibold"
-      >
-        Оформить
-      </button>
-
-    </div>
-  </div>
-)}
   </>
 )}
 {/* Bottom Tab Bar */}
