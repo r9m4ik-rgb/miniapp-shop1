@@ -12,7 +12,10 @@ export default function Home() {
 
   const [cart, setCart] = useState<string[]>([]);
 
+  const [activeTab, setActiveTab] = useState("home");
+
   const products = [
+    
   {
     id: 1,
     title: "iPhone 15 Pro",
@@ -33,6 +36,40 @@ export default function Home() {
     price: "299€",
     image:
       "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MQD83",
+  },
+];
+
+const banners = [
+  {
+    id: 1,
+    title: "Новые iPhone 15",
+    subtitle: "Скидки до 20%",
+    image:
+      "/banners/BU.png",
+  },
+
+  {
+    id: 2,
+    title: "MacBook Air M3",
+    subtitle: "Легкий. Мощный.",
+    image:
+      "/banners/Vikup.png",
+  },
+
+  {
+    id: 3,
+    title: "AirPods Pro",
+    subtitle: "Новое поколение звука",
+    image:
+      "/banners/New.png",
+  },
+
+  {
+    id: 4,
+    title: "AirPods Pro",
+    subtitle: "Новое поколение звука",
+    image:
+      "/banners/Trade.png",
   },
 ];
 
@@ -57,7 +94,42 @@ export default function Home() {
   </div>
 </div>
 
-      {/* Products */}
+{activeTab === "home" && (
+  <>
+
+{/* Banner Slider */}
+
+<div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-6 no-scrollbar">
+
+  {banners.map((banner) => (
+    <div
+      key={banner.id}
+      className="min-w-[90%] relative rounded-[32px] overflow-hidden snap-center flex-shrink-0"
+    >
+
+      <img
+        src={banner.image}
+        alt={banner.title}
+        className="w-full h-[220px] object-cover"
+      />
+
+      <div className="absolute inset-0 bg-black/30" />
+
+      <div className="absolute bottom-6 left-6 text-white">
+        <p className="text-sm opacity-80">
+          {banner.subtitle}
+        </p>
+
+        <h2 className="text-3xl font-bold mt-1">
+          {banner.title}
+        </h2>
+      </div>
+
+    </div>
+  ))}
+
+</div>
+
       <div className="grid gap-6">
         {products.map((item) => (
           <div
@@ -115,8 +187,40 @@ export default function Home() {
     </div>
   </div>
 )}
-
+  </>
+)}
 {/* Bottom Tab Bar */}
+
+{/* Cart Screen */}
+{activeTab === "cart" && (
+  <div className="mb-32 mt-6">
+    <h2 className="text-2xl font-bold mb-4">Корзина</h2>
+
+    {cart.length === 0 ? (
+      <p className="text-gray-500">Корзина пустая</p>
+    ) : (
+      <div className="space-y-3">
+        {cart.map((item, index) => (
+          <div
+            key={index}
+            className="bg-white rounded-2xl p-4 shadow-sm flex items-center justify-between"
+          >
+            <span className="font-medium">{item}</span>
+
+            <button
+              onClick={() =>
+                setCart(cart.filter((_, i) => i !== index))
+              }
+              className="text-red-500"
+            >
+              Удалить
+            </button>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+)}
 
 <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-5">
 
@@ -125,7 +229,12 @@ export default function Home() {
     <div className="flex items-center justify-between">
 
       {/* Home */}
-      <button className="flex flex-col items-center gap-1 text-black">
+<button
+  onClick={() => setActiveTab("home")}
+  className={`flex flex-col items-center gap-1 ${
+    activeTab === "home" ? "text-black" : "text-gray-400"
+  }`}
+>
         <House size={24} />
         <span className="text-xs font-medium">
           Главная
@@ -141,7 +250,12 @@ export default function Home() {
       </button>
 
       {/* Cart */}
-      <button className="flex flex-col items-center gap-1 text-gray-400 relative">
+<button
+  onClick={() => setActiveTab("cart")}
+  className={`flex flex-col items-center gap-1 relative ${
+    activeTab === "cart" ? "text-black" : "text-gray-400"
+  }`}
+>
 
         <div className="relative">
           <ShoppingCart size={24} />
@@ -171,5 +285,8 @@ export default function Home() {
 </div>
 
     </main>
+    
   );
+  
 }
+
