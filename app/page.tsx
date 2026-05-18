@@ -141,31 +141,33 @@ const categories = [
 
 {/* Banner Slider */}
 
-<div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-6 no-scrollbar">
+<div className="flex gap-4 overflow-x-auto pb-6 no-scrollbar">
 
   {banners.map((banner) => (
     <div
       key={banner.id}
-      className="min-w-[90%] relative rounded-[32px] overflow-hidden snap-center flex-shrink-0"
+      className="
+        w-full
+        bg-white
+        rounded-[32px]
+        overflow-hidden
+        flex-shrink-0
+      "
     >
 
       <img
-  src={banner.image}
-  className="
-    w-full
-    aspect-[16/9]
-    object-cover
-  "
-/>
-
-
-      <div className="absolute bottom-6 left-6 text-white">
-
- 
-      </div>
+        src={banner.image}
+        className="
+          w-full
+          h-auto
+          max-h-[220px]
+          object-contain
+        "
+      />
 
     </div>
   ))}
+
 </div>
 
 {/* Hits */}
