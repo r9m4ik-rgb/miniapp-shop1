@@ -14,12 +14,14 @@ export default function Home() {
 
   const [activeTab, setActiveTab] = useState("home");
 
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   const products = [
     
   {
     id: 1,
-    title: "iPhone 15 Pro",
-    price: "1199€",
+    title: "Canon G7X Mark 3 Black",
+    price: "94.990₽",
     image:
       "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-15-pro-max-blacktitanium-select",
   },
@@ -62,6 +64,32 @@ const banners = [
     id: 4,
     image:
       "/banners/Trade.png",
+  },
+];
+
+const categories = [
+  {
+    id: 1,
+    name: "Apple",
+    image: "/banners/apple.jpg",
+  },
+
+  {
+    id: 2,
+    name: "Canon",
+    image: "/banners/canon.jpg",
+  },
+
+  {
+    id: 3,
+    name: "DJI",
+    image: "/banners/dji.png",
+  },
+
+  {
+    id: 4,
+    name: "Plaud",
+    image: "/banners/plaud.webp",
   },
 ];
 
@@ -175,6 +203,89 @@ const banners = [
 )}
 {/* Bottom Tab Bar */}
 
+{/* Catalog Screen */}
+
+{activeTab === "catalog" && (
+  <div className="mb-32">
+
+    <h2 className="text-3xl font-bold mb-6">
+      Каталог
+    </h2>
+
+    {/* Categories */}
+    {!selectedCategory && (
+      <div className="grid grid-cols-4 gap-5">
+
+        {categories.map((category) => (
+          <button
+            key={category.id}
+            onClick={() =>
+              setSelectedCategory(category.name)
+            }
+            className="bg-white rounded-3xl p-2 h-50 shadow-sm active:scale-95 transition"
+          >
+
+            <img
+              src={category.image}
+              alt={category.name}
+              className="w-40 h-40 object-contain mx-auto"
+            />
+
+            
+
+          </button>
+        ))}
+
+      </div>
+    )}
+
+    {/* Apple Products */}
+    {selectedCategory === "Apple" && (
+      <div>
+
+        <button
+          onClick={() => setSelectedCategory("")}
+          className="mb-5 text-black flex items-center gap-1 active:scale-95 transition"
+        >
+          ← Назад
+        </button>
+
+        <div className="grid gap-5">
+
+          {products.map((item) => (
+            <div
+              key={item.id}
+              className="bg-white rounded-3xl overflow-hidden shadow-sm"
+            >
+
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-[240px] object-contain p-5"
+              />
+
+              <div className="p-5">
+
+                <h2 className="text-xl font-semibold">
+                  {item.title}
+                </h2>
+
+                <p className="text-gray-500 mt-2">
+                  {item.price}
+                </p>
+
+              </div>
+            </div>
+          ))}
+
+        </div>
+
+      </div>
+    )}
+
+  </div>
+)}
+
 {/* Cart Screen */}
 {activeTab === "cart" && (
   <div className="mb-32 mt-6">
@@ -226,7 +337,15 @@ const banners = [
       </button>
 
       {/* Catalog */}
-      <button className="flex flex-col items-center gap-1 text-gray-400">
+
+      <button
+  onClick={() => setActiveTab("catalog")}
+  className={`flex flex-col items-center gap-1 ${
+    activeTab === "catalog"
+      ? "text-black"
+      : "text-gray-400"
+  }`}
+>
         <ShoppingBag size={24} />
         <span className="text-xs">
           Каталог
