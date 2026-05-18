@@ -1,7 +1,18 @@
 "use client";
+import { useState } from "react";
+import {
+  House,
+  ShoppingBag,
+  ShoppingCart,
+  User,
+} from "lucide-react";
+import ProductCard from "./componets/ProductCard";
 
 export default function Home() {
-const products = [
+
+  const [cart, setCart] = useState<string[]>([]);
+
+  const products = [
   {
     id: 1,
     title: "iPhone 15 Pro",
@@ -26,17 +37,25 @@ const products = [
 ];
 
   return (
-    <main className="min-h-screen bg-[#f5f5f7] p-5">
-      {/* Header */}
-      <div className="mb-8">
-        <p className="text-gray-500 text-sm mb-2">
-          Telegram Mini App
-        </p>
+    <main className="min-h-screen bg-[#f5f5f7] p-5 pb-40">
 
-        <h1 className="text-2xl font-bold">
-          MosAppleTorg Каталог
-        </h1>
-      </div>
+<div className="sticky top-0 z-50 bg-[#f5f5f7] pb-4">
+  <div className="flex items-center justify-between pt-2">
+    <div>
+      <p className="text-gray-500 text-sm">
+        Telegram Mini App
+      </p>
+
+      <h1 className="text-3xl font-bold mt-1">
+        MosAppleTorg
+      </h1>
+    </div>
+
+    <div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center text-xl font-bold">
+      M
+    </div>
+  </div>
+</div>
 
       {/* Products */}
       <div className="grid gap-6">
@@ -61,9 +80,9 @@ const products = [
               </p>
 
               <button
-                onClick={() =>
-                  alert(`Вы выбрали ${item.title}`)
-                }
+  onClick={() =>
+    setCart([...cart, item.title])
+  }
                 className="w-full bg-blue-500 text-white py-4 rounded-2xl text-lg font-medium hover:opacity-90 transition"
               >
                 Купить
@@ -72,6 +91,85 @@ const products = [
           </div>
         ))}
       </div>
+      {cart.length > 0 && (
+  <div className="fixed bottom-5 left-5 right-5 bg-black text-white rounded-3xl p-5 shadow-2xl">
+    
+    <div className="flex items-center justify-between">
+      
+      <div>
+        <p className="text-sm text-gray-400">
+          Корзина
+        </p>
+
+        <h2 className="text-xl font-bold">
+          {cart.length} товаров
+        </h2>
+      </div>
+
+      <button
+        className="bg-white text-black px-5 py-3 rounded-2xl font-semibold"
+      >
+        Оформить
+      </button>
+
+    </div>
+  </div>
+)}
+
+{/* Bottom Tab Bar */}
+
+<div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-5">
+
+  <div className="bg-white/80 backdrop-blur-xl border border-white/40 rounded-[32px] shadow-2xl px-6 py-4">
+
+    <div className="flex items-center justify-between">
+
+      {/* Home */}
+      <button className="flex flex-col items-center gap-1 text-black">
+        <House size={24} />
+        <span className="text-xs font-medium">
+          Главная
+        </span>
+      </button>
+
+      {/* Catalog */}
+      <button className="flex flex-col items-center gap-1 text-gray-400">
+        <ShoppingBag size={24} />
+        <span className="text-xs">
+          Каталог
+        </span>
+      </button>
+
+      {/* Cart */}
+      <button className="flex flex-col items-center gap-1 text-gray-400 relative">
+
+        <div className="relative">
+          <ShoppingCart size={24} />
+
+          {cart.length > 0 && (
+            <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-black text-white text-[10px] flex items-center justify-center">
+              {cart.length}
+            </div>
+          )}
+        </div>
+
+        <span className="text-xs">
+          Корзина
+        </span>
+      </button>
+
+      {/* Profile */}
+      <button className="flex flex-col items-center gap-1 text-gray-400">
+        <User size={24} />
+        <span className="text-xs">
+          Профиль
+        </span>
+      </button>
+
+    </div>
+  </div>
+</div>
+
     </main>
   );
 }
