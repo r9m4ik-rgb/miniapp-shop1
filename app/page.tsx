@@ -19,10 +19,15 @@ import ProductCard from "./componets/ProductCard";
 export default function Home() {
 
   useEffect(() => {
-  if (window.Telegram?.WebApp) {
-    window.Telegram.WebApp.expand();
+  const tg = window.Telegram?.WebApp;
 
-    window.Telegram.WebApp.disableVerticalSwipes();
+  if (tg) {
+    tg.ready();
+    tg.expand();
+
+    if (tg.disableVerticalSwipes) {
+      tg.disableVerticalSwipes();
+    }
   }
 }, []);
 
@@ -131,7 +136,7 @@ const categories = [
 ];
 
   return (
-    <main className="min-h-screen bg-[#f5f5f7] p-5 pb-40">
+    <main className="h-full overflow-y-auto bg-[#f5f5f7] p-5 pb-40">
 
 <div className="sticky top-0 z-50 bg-transparent">
   <div className="px-5 pt-3 pb-3">
