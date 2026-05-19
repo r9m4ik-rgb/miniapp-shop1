@@ -1,14 +1,30 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 import {
   House,
   ShoppingBag,
   ShoppingCart,
   User,
 } from "lucide-react";
+
+declare global {
+  interface Window {
+    Telegram: any;
+  }
+}
+
 import ProductCard from "./componets/ProductCard";
 
 export default function Home() {
+
+  useEffect(() => {
+  if (window.Telegram?.WebApp) {
+    window.Telegram.WebApp.expand();
+
+    window.Telegram.WebApp.disableVerticalSwipes();
+  }
+}, []);
 
   const [cart, setCart] = useState<string[]>([]);
 
