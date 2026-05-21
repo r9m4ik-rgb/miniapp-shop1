@@ -136,12 +136,16 @@ const categories = [
 ];
 
   return (
-    <main className="
-  min-h-screen
-  bg-[#f7f3eb]
-  p-5
-  pb-40
-">
+    <main
+  className="
+    min-h-screen
+    bg-[radial-gradient(circle_at_top,#fdfcf8_0%,#f7f3eb_45%,#f3ede3_100%)]
+    p-5
+  "
+  style={{
+    paddingBottom: "180px",
+  }}
+>
 
 <div className="sticky top-0 z-50 bg-transparent">
   <div className="px-5 pt-3 pb-3">
@@ -456,7 +460,12 @@ const categories = [
   </div>
 )}
 
-<div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-5">
+<div
+  className="fixed bottom-0 left-0 right-0 z-50 px-5"
+  style={{
+    paddingBottom: "calc(20px + env(safe-area-inset-bottom))",
+  }}
+>
 
   <div className="bg-[#fffdf8]/70 backdrop-blur-xl border border-white/40 rounded-[32px] shadow-2xl px-6 py-4">
 
