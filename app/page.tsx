@@ -136,7 +136,12 @@ const categories = [
 ];
 
   return (
-    <main className="h-full overflow-y-auto bg-[#f5f5f7] p-5 pb-40">
+    <main className="
+  min-h-screen
+  bg-[#f7f3eb]
+  p-5
+  pb-40
+">
 
 <div className="sticky top-0 z-50 bg-transparent">
   <div className="px-5 pt-3 pb-3">
@@ -145,7 +150,7 @@ const categories = [
       placeholder="Поиск техники..."
       className="
         w-full
-        bg-white
+        bg-[#fffdf9]
         rounded-2xl
         px-5
         py-4
@@ -158,7 +163,7 @@ const categories = [
 </div>
 
 {activeTab === "home" && (
-  <>
+  <div className="space-y-10">
 
 {/* Banner Slider */}
 
@@ -193,7 +198,7 @@ const categories = [
 
 {/* Hits */}
 
-<div className="mb-8">
+<div>
 
   <div className="flex items-center justify-between mb-4">
     <h2 className="text-2xl font-bold">
@@ -206,18 +211,30 @@ const categories = [
     {products.map((item) => (
       <div
         key={item.id}
-        className="min-w-[260px] bg-white rounded-3xl overflow-hidden shadow-sm"
+        className="
+  min-w-[200px]
+  max-w-[200px]
+  bg-[#fffdf9]
+  rounded-3xl
+  overflow-hidden
+  shadow-sm
+"
       >
 
         <img
           src={item.image}
           alt={item.title}
-          className="w-full h-[220px] object-contain p-5"
+          className="
+  w-full
+  h-[160px]
+  object-contain
+  p-4
+"
         />
 
         <div className="p-5">
 
-          <h2 className="text-lg font-semibold">
+          <h2 className="text-base font-semibold leading-tight">
             {item.title}
           </h2>
 
@@ -229,8 +246,15 @@ const categories = [
             onClick={() =>
               setCart([...cart, item.title])
             }
-            className="w-full mt-4 bg-blue-500 text-white py-3 rounded-2xl"
-          >
+            className="
+  w-full
+  mt-4
+  bg-[#d6c2a1]
+  text-black
+  py-2.5
+  rounded-2xl
+"
+>
             Купить
           </button>
 
@@ -256,18 +280,30 @@ const categories = [
     {products.map((item) => (
       <div
         key={item.id}
-        className="min-w-[260px] bg-white rounded-3xl overflow-hidden shadow-sm"
+        className="
+  min-w-[200px]
+  max-w-[200px]
+  bg-[#fffdf9]
+  rounded-3xl
+  overflow-hidden
+  shadow-sm
+"
       >
 
         <img
           src={item.image}
           alt={item.title}
-          className="w-full h-[220px] object-contain p-5"
+          className="
+  w-full
+  h-[160px]
+  object-contain
+  p-4
+"
         />
 
         <div className="p-5">
 
-          <h2 className="text-lg font-semibold">
+          <h2 className="text-base font-semibold leading-tight">
             {item.title}
           </h2>
 
@@ -279,8 +315,14 @@ const categories = [
             onClick={() =>
               setCart([...cart, item.title])
             }
-            className="w-full mt-4 bg-black text-white py-3 rounded-2xl"
-          >
+           className="
+  w-full
+  mt-4
+  bg-[#d6c2a1]
+  text-black
+  py-2.5
+  rounded-2xl
+">
             Купить
           </button>
 
@@ -292,7 +334,7 @@ const categories = [
 </div>
 
 
-  </>
+  </div>
 )}
 {/* Bottom Tab Bar */}
 
@@ -346,8 +388,14 @@ const categories = [
           {products.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-3xl overflow-hidden shadow-sm"
-            >
+              className="
+                bg-white/70
+                backdrop-blur-xl
+                rounded-3xl
+                overflow-hidden
+                border border-white/50
+                shadow-[0_8px_30px_rgba(0,0,0,0.04)]
+              ">
 
               <img
                 src={item.image}
@@ -410,7 +458,7 @@ const categories = [
 
 <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-5">
 
-  <div className="bg-white/80 backdrop-blur-xl border border-white/40 rounded-[32px] shadow-2xl px-6 py-4">
+  <div className="bg-[#fffdf8]/70 backdrop-blur-xl border border-white/40 rounded-[32px] shadow-2xl px-6 py-4">
 
     <div className="flex items-center justify-between">
 
