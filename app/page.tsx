@@ -139,7 +139,7 @@ const categories = [
     <main
   className="
     min-h-screen
-    bg-[radial-gradient(circle_at_top,#fdfcf8_0%,#f7f3eb_45%,#f3ede3_100%)]
+    bg-[#fffdf9]
     p-5
   "
   style={{
