@@ -140,15 +140,20 @@ const categories = [
   className="
     min-h-screen
     bg-[#fffdf9]
-    p-5
+    px-5
+    pt-5
   "
   style={{
     paddingBottom: "180px",
   }}
 >
 
-<div className="sticky top-0 z-50 bg-transparent">
-  <div className="px-5 pt-3 pb-3">
+<div className="sticky top-0 z-50 pt-3">
+  <div className="
+  px-5
+  pb-3
+  backdrop-blur-xl
+">
     <input
       type="text"
       placeholder="Поиск техники..."
