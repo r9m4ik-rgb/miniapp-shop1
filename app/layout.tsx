@@ -6,9 +6,11 @@ import "./globals.css";
 
 import Script from "next/script";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+import { Manrope } from "next/font/google";
+
+const manrope = Manrope({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-manrope",
 });
 
 const geistMono = Geist_Mono({
@@ -29,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${manrope.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
 
